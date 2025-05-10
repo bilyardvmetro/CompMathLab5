@@ -16,7 +16,7 @@ import (
 // y2   f[x1,x2]   f[x0,x1,x2]
 // y3   f[x2,x3]   f[x1,x2,x3]   f[x0,x1,x2,x3]
 //
-// Мы вернем массив coeffs = [y0, f[x0,x1], f[x0,x1,x2], f[x0,x1,x2,x3]]
+// Возвращаем массив coeffs = [y0, f[x0,x1], f[x0,x1,x2], f[x0,x1,x2,x3]]
 // И полную таблицу для вывода пользователю.
 func BuildDividedDifferenceTable(points Points) ([][]float64, []float64, error) {
 	n := len(points)
@@ -62,11 +62,6 @@ func BuildDividedDifferenceTable(points Points) ([][]float64, []float64, error) 
 		coeffs[j] = table[0][j]
 	}
 
-	// Для вывода пользователю лучше иметь таблицу, где каждый элемент table[i][j] соответствует f[x_i, ..., x_{i+j}]
-	// Но для использования в формуле нужны coeffs. Для вывода можно переформатировать или использовать эту "треугольную" таблицу.
-	// Давайте вернем coeffs и "полную" таблицу для вывода, где NaN будут означать отсутствующие значения.
-	// Эта таблица `table` уже почти то, что нужно, но она "сдвинута".
-	// Сделаем "выводимую" таблицу (divDiffDisplayTable):
 	// divDiffDisplayTable[i] будет строкой для x_i, y_i, f[x_i,x_{i+1}], f[x_i,x_{i+1},x_{i+2}], ...
 	divDiffDisplayTable := make([][]float64, n)
 	for i := 0; i < n; i++ {

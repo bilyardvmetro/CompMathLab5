@@ -119,14 +119,6 @@ func PlotInterpolations(
 		p.Legend.Add("Узлы интерполяции", scatter)
 	}
 
-	// Устанавливаем видимый диапазон для осей (если нужно)
-	// Это может быть полезно, если функции имеют очень разные масштабы
-	// p.X.Min = minX
-	// p.X.Max = maxX
-	// p.Y.Min = ...
-	// p.Y.Max = ...
-	// Gonum plot обычно сам хорошо подбирает диапазоны
-
 	// Сохраняем график в файл
 	if err := p.Save(8*vg.Inch, 6*vg.Inch, filename); err != nil {
 		return fmt.Errorf("ошибка сохранения графика: %v", err)
